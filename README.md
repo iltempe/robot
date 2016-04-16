@@ -1,42 +1,10 @@
-# 🤖 Creating your own Facebook Messenger bot
+# Fare un robot facebook
 
 ![Alt text](/demo/Demo.gif)
 
-Facebook recently opened up their Messenger platform to enable bots to converse with users through Facebook Apps and on Facebook Pages. 
+Esperimento sviluppato da [questo repository](https://github.com/jw84/messenger-bot-tutorial)
 
-You can read the  [documentation](https://developers.facebook.com/docs/messenger-platform/quickstart) the Messenger team prepared but it's not very clear for beginners and intermediate hackers. 
-
-So instead here is how to create your own messenger bot in 15 minutes.
-
-## 🙌 Get set
-
-Messenger bots uses a web server to process messages it receives or to figure out what messages to send. You also need to have the bot be authenticated to speak with the web server and the bot approved by Facebook to speak with the public.
-
-You can also skip the whole thing by git cloning this repository, running npm install, and run a server somewhere.
-
-### *Build the server*
-
-1. Install the Heroku toolbelt from here https://toolbelt.heroku.com to launch, stop and monitor instances. Sign up for free at https://www.heroku.com if you don't have an account yet.
-
-2. Install Node from here https://nodejs.org, this will be the server environment. Then open up Terminal or Command Line Prompt and make sure you've got the very most recent version of npm by installing it again:
-
-    ```
-    sudo npm install npm -g
-    ```
-
-3. Create a new folder somewhere and let's create a new Node project. Hit Enter to accept the defaults.
-
-    ```
-    npm init
-    ```
-
-4. Install the additional Node dependencies. Express is for the server, request is for sending out messages and body-parser is to process messages.
-
-    ```
-    npm install express request body-parser --save
-    ```
-
-5. Create an index.js file in the folder and copy this into it. We will start by authenticating the bot.
+1. Creare un file index.js file che includa la verifica del webhook. inserire al posto di XXX il token di verifica del webhook.
 
     ```
     var express = require('express')
@@ -54,12 +22,12 @@ You can also skip the whole thing by git cloning this repository, running npm in
 
     // Index route
     app.get('/', function (req, res) {
-    	res.send('Hello world, I am a chat bot')
+    	res.send('Ciao!!')
     })
 
     // for Facebook verification
     app.get('/webhook/', function (req, res) {
-    	if (req.query['hub.verify_token'] === 'my_voice_is_my_password_verify_me') {
+    	if (req.query['hub.verify_token'] === 'XXX') {
     		res.send(req.query['hub.challenge'])
     	}
     	res.send('Error, wrong token')
@@ -71,47 +39,34 @@ You can also skip the whole thing by git cloning this repository, running npm in
     })
     ```
 
-6. Make a file called Procfile and copy this. This is so Heroku can know what file to run.
+Una volta fatto questo è necessario caricare il file (ed eventuali file accessori) in una folder su un tuo server. La connessione deve essere https. Se hai un account HEROKU puoi fare un deploy di questo repository direttamente su Heroku creando una applicazione e facendo deploy di un repository come questo. Heroku si preoccupa anche installare le dipendenze JS necessarie. se fai deploy su Heroku il webhook da configurare sarà del tipo "https://XXXXXXX.herokuapp.com/webhook/"
 
-    ```
-    web: node index.js
-    ```
 
-7. Commit all the code with Git then create a new Heroku instance and push the code to the cloud.
+### *Setup su Facebook*
 
-    ```
-    git init
-    git add .
-    git commit --message 'hello world'
-    heroku create
-    git push heroku master
-    ```
-
-### *Setup the Facebook App*
-
-1. Create or configure a Facebook App or Page here https://developers.facebook.com/apps/
+1. Creare una applicazione Facebook https://developers.facebook.com/apps/
 
     ![Alt text](/demo/shot1.jpg)
 
-2. In the app go to Messenger tab then click Setup Webhook. Here you will put in the URL of your Heroku server and a token. Make sure to check all the subscription fields. 
+2. Nella app configura il webhook nella sezione Messenger. 
 
     ![Alt text](/demo/shot3.jpg)
 
-3. Get a Page Access Token and save this somewhere. 
+3. Preleva e copia un toke di una pagina Facebook. 
 
     ![Alt text](/demo/shot2.jpg)
 
-4. Go back to Terminal and type in this command to trigger the Facebbook app to send messages. Remember to use the token you requested earlier.
+4. Usando il token della pagina copiato da Facebook da riga di digitare
 
     ```
     curl -X POST "https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=<PAGE_ACCESS_TOKEN>"
     ```
 
-### *Setup the bot*
+### *Setup del BOT*
 
-Now that Facebook and Heroku can talk to each other we can code out the bot.
+Facebook e il server (Heroku) a questo punto si parlano ed è possibile sviluppare il codice dell'applicazione BOT .
 
-1. Add an API endpoint to index.js to process messages. Remember to also include the token we got earlier. 
+1. Aggiungere un API endpoint a index.js per leggere i messaggi. Ricordati di includere anche il token della pagina facebook che hai usato in PAGE_ACCESS_TOKEN. 
 
     ```
     app.post('/webhook/', function (req, res) {
@@ -130,7 +85,7 @@ Now that Facebook and Heroku can talk to each other we can code out the bot.
     var token = "<PAGE_ACCESS_TOKEN>"
     ```
 
-3. Add a function to echo back messages
+2. Aggiungi una funzione per ripetere i messaggi inviati
 
     ```
     function sendTextMessage(sender, text) {
@@ -155,27 +110,19 @@ Now that Facebook and Heroku can talk to each other we can code out the bot.
     }
     ```
 
-4. Commit the code again and push to Heroku
+3. Fai un deploy dell'applicazione
 
-    ```
-    git add .
-    git commit -m 'updated the bot to speak'
-    git push heroku master
-    ```
-
-5. Go to the Facebook Page and click on Message to start chatting!
+4. Vai su Facebook e verifica che puoi iniziare a chattare!
 
 ![Alt text](/demo/shot4.jpg)
 
-## ⚙ Customize what the bot says
+## Personalizza quello che il BOT dice
 
-### *Send a Structured Message*
+### *Inviare messaggi strutturati*
 
-Facebook Messenger can send messages structured as cards or buttons. 
+Facebook Messenger può inviare messaggi strutturati come card o button. 
 
-![Alt text](/demo/shot5.jpg)
-
-1. Copy the code below to index.js to send an test message back as two cards.
+1. Usa del codice come segue per inviare messaggi strutturati.
 
     ```
     function sendGenericMessage(sender) {
@@ -228,7 +175,7 @@ Facebook Messenger can send messages structured as cards or buttons.
     }
     ```
 
-2. Update the webhook API to look for special messages to trigger the cards
+2. Aggiorna le API del webhook per inviare messaggi di tipo speciale
 
     ```
     app.post('/webhook/', function (req, res) {
@@ -249,9 +196,9 @@ Facebook Messenger can send messages structured as cards or buttons.
     })
     ```
 
-### *Act on what the user messages*
+### *Intercettare cosa l'utente digitale come messaggi*
 
-What happens when the user clicks on a message button or card though? Let's update the webhook API one more time to send back a postback function.
+La funzione di postback può essere usata per definire cosa l'utente fa nell'azionamento su messaggi strutturati.
 
 		```
     app.post('/webhook/', function (req, res) {
@@ -261,7 +208,7 @@ What happens when the user clicks on a message button or card though? Let's upda
 		    sender = event.sender.id
 		    if (event.message && event.message.text) {
 			    text = event.message.text
-			    if (text === 'Generic') {
+			    if (text === 'opendata') {
 				    sendGenericMessage(sender)
 				    continue
 			    }
@@ -277,32 +224,12 @@ What happens when the user clicks on a message button or card though? Let's upda
     })
     ```
 
-Git add, commit, and push to Heroku again.
 
-Now when you chat with the bot and type 'Generic' you can see this.
+Quando digiti 'opendata' ora vedrai messaggi strutturati.
 
-   ![Alt text](/demo/shot6.jpg)
+## Condividere il tuo BOT
 
-## 📡 How to share your bot
+### *Aggiungere una chat alla tua pagina*
 
-### *Add a chat button to your webpage*
+Vai [here](https://developers.facebook.com/docs/messenger-platform/plugin-reference) per apprendere come inserire una chat su una pagina.
 
-Go [here](https://developers.facebook.com/docs/messenger-platform/plugin-reference) to learn how to add a chat button your page.
-
-### *Create a shortlink*
-
-You can use https://m.me/<PAGE_USERNAME> to have someone start a chat.
-
-## 💡 What's next?
-
-You can learn how to get your bot approved for public use [here](https://developers.facebook.com/docs/messenger-platform/app-review).
-
-You can also connect an AI brain to your bot [here](https://wit.ai)
-
-Read about all things chat bots with the ChatBots Magazine [here](https://medium.com/chat-bots)
-
-You can also design Messenger bots in Sketch with the [Bots UI Kit](https://bots.mockuuups.com)!
-
-## How I can help
-
-I build and design bots all day. Email me for help!
