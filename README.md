@@ -2,7 +2,7 @@
 
 ![Alt text](/demo/Demo.gif)
 
-Esperimento sviluppato da [questo repository](https://github.com/jw84/messenger-bot-tutorial)
+Esperimento sviluppato da [questo repository](https://github.com/jw84/messenger-bot-tutorial).
 
 1. Creare un file index.js file che includa la verifica del webhook. inserire al posto di XXX il token di verifica del webhook.
 
