@@ -4,7 +4,9 @@
 
 Esperimento sviluppato da [questo repository](https://github.com/jw84/messenger-bot-tutorial).
 
-1. Creare un file index.js file che includa la verifica del webhook. inserire al posto di XXX il token di verifica del webhook.
+### *Impostare l'applicazione server*
+
+Creare un file index.js file che includa la verifica del webhook. inserire al posto di XXX il token di verifica del webhook.
 
     ```
     var express = require('express')
@@ -54,7 +56,7 @@ Una volta fatto questo è necessario caricare il file (ed eventuali file accesso
 
 3. Preleva e copia un toke di una pagina Facebook. 
 
-    ![Alt text](/demo/shot2.jpg)
+    ![Alt text](/demo/2.png)
 
 4. Usando il token della pagina copiato da Facebook da riga di digitare
 
@@ -114,7 +116,7 @@ Facebook e il server (Heroku) a questo punto si parlano ed è possibile sviluppa
 
 4. Vai su Facebook e verifica che puoi iniziare a chattare!
 
-![Alt text](/demo/shot4.jpg)
+![Alt text](/demo/5.png)
 
 ## Personalizza quello che il BOT dice
 
@@ -225,7 +227,7 @@ La funzione di postback può essere usata per definire cosa l'utente fa nell'azi
     ```
 
 
-Quando digiti 'opendata' ora vedrai messaggi strutturati.
+Quando digiti 'Generic' ora vedrai i messaggi strutturati.
 
 ## Condividere il tuo BOT
 
