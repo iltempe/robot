@@ -49,12 +49,13 @@ Una volta fatto questo è necessario caricare il file (ed eventuali file accesso
 1. Creare una applicazione Facebook https://developers.facebook.com/apps/
 
     ![Alt text](/demo/shot1.jpg)
+    ![Alt text](/demo/4.png)
 
 2. Nella app configura il webhook nella sezione Messenger. 
 
     ![Alt text](/demo/shot3.jpg)
 
-3. Preleva e copia un toke di una pagina Facebook. 
+3. Preleva e copia un token di una pagina Facebook. 
 
     ![Alt text](/demo/2.png)
 
