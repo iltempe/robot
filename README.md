@@ -236,3 +236,5 @@ Quando digiti 'Generic' ora vedrai i messaggi strutturati.
 
 Vai [here](https://developers.facebook.com/docs/messenger-platform/plugin-reference) per apprendere come inserire una chat su una pagina.
 
+Attualmente il tuo BOT è ancora in fase di test e sviluppo. Per renderlo pubblico devi procedere a rendere pubblica la applicazione facebook e sottoporla al processo di review.
+
