@@ -79,12 +79,12 @@ function sendGenericMessage(sender) {
 				"template_type": "generic",
 				"elements": [{
 					"title": "Artigiani",
-					"subtitle": "Element #1 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+					"subtitle": "Tutti hi artigiani di prato estratti da Openstreetmap",
+					"image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/2000px-Openstreetmap_logo.svg.png",
 					"buttons": [{
 						"type": "web_url",
-						"url": "https://www.messenger.com",
-						"title": "web url"
+						"url": "http://iltempe.github.io/opendatagentediprato/datasets/artigiani/",
+						"title": "Link"
 					}, {
 						"type": "postback",
 						"title": "Postback",
@@ -92,9 +92,14 @@ function sendGenericMessage(sender) {
 					}],
 				}, {
 					"title": "Biometeo",
-					"subtitle": "Element #2 of an hscroll",
-					"image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-					"buttons": [{
+					"subtitle": "Biometeo di Prato",
+					"image_url": "http://www.cibic.unifi.it/upload/sub/LogoCIBICb.jpg",
+					"buttons": [
+					{
+						"type": "web_url",
+						"url": "http://iltempe.github.io/opendatagentediprato/datasets/artigiani/",
+						"title": "Link"
+					},{
 						"type": "postback",
 						"title": "Postback",
 						"payload": "Payload for second element in a generic bubble",
