@@ -79,7 +79,7 @@ function sendGenericMessage(sender) {
 				"template_type": "generic",
 				"elements": [{
 					"title": "Artigiani",
-					"subtitle": "Tutti gli artigiani di Prato referenziati tramite il tag "craft" su Openstreetmap. 
+					"subtitle": "Tutti gli artigiani di Prato referenziati tramite il tag craft su Openstreetmap." 
 					"image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/2000px-Openstreetmap_logo.svg.png",
 					"buttons": [{
 						"type": "web_url",
