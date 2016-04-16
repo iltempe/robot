@@ -79,21 +79,25 @@ function sendGenericMessage(sender) {
 				"template_type": "generic",
 				"elements": [{
 					"title": "Artigiani",
-					"subtitle": "Tutti gli artigiani di Prato referenziati tramite il tag craft su Openstreetmap." 
-					"image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Openstreetmap_logo.svg/2000px-Openstreetmap_logo.svg.png",
+					"subtitle": "Element #1 of an hscroll",
+					"image_url": "http://messengerdemo.parseapp.com/img/rift.png",
 					"buttons": [{
 						"type": "web_url",
-						"url": "hhttp://iltempe.github.io/opendatagentediprato/datasets/artigiani/",
-						"title": "Dataset"
+						"url": "https://www.messenger.com",
+						"title": "web url"
+					}, {
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for first element in a generic bubble",
 					}],
 				}, {
 					"title": "Biometeo",
-					"subtitle": "Biometeo di Prato rilasciate da Università di Firenze fonte Centro Interpandimentale Di Bioclimatologia. Aggiornati quotidianamente.",
-					"image_url": "http://www.cibic.unifi.it/upload/sub/LogoCIBICb.jpg",
+					"subtitle": "Element #2 of an hscroll",
+					"image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
 					"buttons": [{
-						"type": "web_url",
-						"url": "http://iltempe.github.io/opendatagentediprato/datasets/biometeo/",
-						"title": "Dataset"
+						"type": "postback",
+						"title": "Postback",
+						"payload": "Payload for second element in a generic bubble",
 					}],
 				}]
 			}
